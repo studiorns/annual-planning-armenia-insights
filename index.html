@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Armenia Market Insights | Annual Planning - Abu Dhabi DCT</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* SONER Logo Animation */
         @keyframes sonerScan { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -53,9 +51,6 @@
             --radius-md: 12px;
             --radius-lg: 16px;
             --transition: all 0.3s ease;
-            --bg-color: #000000;
-            --card-bg: #121212;
-            --section-bg: #181818;
         }
         
         * {
@@ -66,19 +61,17 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--gray-800);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            color: var(--gray-800);
+            background-color: var(--gray-100);
+            padding: 0;
+            margin: 0;
         }
         
         .container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
         
         header {
@@ -110,21 +103,6 @@
             z-index: 1;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            line-height: 1.2;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 800px;
-            text-align: center;
-            margin: 0 auto;
-        }
-        
         .breadcrumb {
             background-color: var(--gray-100);
             padding: 12px 0;
@@ -146,200 +124,231 @@
             margin: 0 8px;
         }
         
-        .insights-section {
-            background-color: var(--section-bg);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow);
-            padding: 28px;
-            margin-bottom: 32px;
-            transition: var(--transition);
-            border: 1px solid var(--gray-300);
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
         }
         
-        .insights-section:hover {
-            box-shadow: var(--shadow-md);
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem;
+            color: var(--gray-800);
+        }
+        
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.8rem;
+            color: var(--gray-800);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray-800);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background-color: var(--gray-200);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow);
             transform: translateY(-2px);
         }
         
-        .insights-section h2 {
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid var(--gray-200);
-            padding-bottom: 16px;
-            margin-bottom: 28px;
-            color: var(--gray-900);
-            font-size: 1.5rem;
-        }
-        
-        .insights-section h2 i {
-            margin-right: 12px;
-            color: var(--primary);
-            font-size: 1.25rem;
-        }
-        
-        .insight-card {
-            background-color: var(--gray-100);
+        .metric-card {
+            background-color: var(--gray-200);
             border-radius: var(--radius);
-            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            padding: 25px;
             margin-bottom: 20px;
             border-left: 4px solid var(--primary);
-            transition: var(--transition);
         }
         
-        .insight-card:hover {
-            transform: translateX(4px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .insight-card h3 {
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-            font-size: 1.2rem;
+        .metric-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
+            margin-bottom: 15px;
         }
         
-        .insight-card h3 i {
-            margin-right: 10px;
-            color: var(--primary);
+        .metric-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin: 0;
         }
         
-        .insight-card p {
-            color: var(--gray-800);
-            line-height: 1.7;
-            margin-bottom: 0;
-        }
-        
-        .metrics-highlight {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 24px 0;
-        }
-        
-        .metric-highlight {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: var(--radius);
-            text-align: center;
-            border: 1px solid var(--gray-300);
-        }
-        
-        .metric-highlight .value {
-            font-size: 2rem;
+        .metric-value {
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary-dark);
-            display: block;
+            background-color: var(--primary-light);
+            padding: 5px 12px;
+            border-radius: 20px;
         }
         
-        .metric-highlight .label {
-            font-size: 0.9rem;
-            color: var(--gray-600);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .metric-description {
+            margin-bottom: 15px;
+            color: var(--gray-700);
         }
         
-        .recommendation-card {
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--gray-200) 100%);
-            border-radius: var(--radius);
-            padding: 24px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--secondary);
+        .calculation {
+            background-color: var(--gray-100);
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 15px;
+            border-left: 3px solid var(--gray-400);
         }
         
-        .recommendation-card h3 {
-            color: var(--secondary);
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .recommendation-card h3 i {
-            margin-right: 10px;
-        }
-        
-        .recommendation-card p {
+        .calculation h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 10px;
             color: var(--gray-800);
-            line-height: 1.7;
+        }
+        
+        .interpretation {
+            margin-bottom: 15px;
+        }
+        
+        .interpretation h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--gray-800);
+        }
+        
+        .interpretation ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .business-implications {
+            background-color: var(--secondary-light);
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 15px;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .business-implications h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .business-implications ul {
+            padding-left: 20px;
             margin-bottom: 0;
         }
         
-        .print-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            z-index: 1000;
+        .business-implications li {
+            margin-bottom: 8px;
         }
         
-        .print-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 6px 16px rgba(26, 115, 232, 0.5);
+        .business-implications li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .example {
+            background-color: var(--warning-light);
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 15px;
+            border-left: 3px solid var(--warning);
+        }
+        
+        .example h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #d68000;
+        }
+        
+        .section-intro {
+            background-color: var(--primary-light);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .section-intro p {
+            margin-bottom: 0;
+        }
+        
+        .footer {
+            padding: 20px 0;
+            background-color: var(--gray-200);
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            text-align: center;
+            color: var(--gray-600);
+            margin-bottom: 0;
         }
         
         @media (max-width: 768px) {
-            .metrics-highlight {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .print-btn {
-                bottom: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-                right: 20px;
-            }
-            
             .container {
-                padding: 0 16px;
+                padding: 0 15px;
             }
             
-            .insights-section {
-                padding: 20px;
-                margin-bottom: 24px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .metrics-highlight {
-                grid-template-columns: 1fr;
+            h1 {
+                font-size: 2rem;
             }
             
-            .insights-section h2 {
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
                 font-size: 1.3rem;
             }
             
-            header h1 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media print {
-            body {
-                background-color: white;
+            .card, .metric-card {
+                padding: 20px;
             }
             
-            .insights-section {
-                box-shadow: none;
-                break-inside: avoid;
+            .metric-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
             }
             
-            .print-btn {
-                display: none;
+            .metric-value {
+                align-self: flex-start;
             }
         }
     </style>
@@ -367,127 +376,252 @@
                     <span class="soner-tagline">Visual Intelligence</span>
                 </div>
             </div>
-            <h1>Armenia Market Insights</h1>
+            <h1>Armenia Market Insights & Analysis</h1>
             <h2 style="font-size: 1.3rem; margin-top: 5px; font-weight: 500; border-bottom: none; padding-bottom: 0; color: white;">Department of Culture and Tourism - Abu Dhabi</h2>
-            <p class="subtitle">Strategic Analysis & Recommendations for Armenia Market Development</p>
+            <p class="subtitle">Strategic Market Analysis & Performance Indicators</p>
         </div>
     </header>
     
     <div class="container">
-        <div class="insights-section">
-            <h2><i class="fas fa-chart-line"></i> Market Performance Analysis</h2>
+        <div class="card">
+            <h2>Introduction</h2>
+            <p>This comprehensive analysis provides detailed insights into the Armenia market performance for Abu Dhabi tourism, covering hotel guests, flight searches, and outbound travel patterns. The analysis is designed to support strategic decision-making for annual planning and marketing optimization.</p>
+            <p>Each metric is analyzed in terms of:</p>
+            <ul>
+                <li>Performance trends and year-over-year growth</li>
+                <li>Seasonal patterns and peak periods</li>
+                <li>Market dynamics and growth drivers</li>
+                <li>Strategic implications and recommendations</li>
+                <li>Comparative analysis with outbound travel patterns</li>
+            </ul>
+            <p>The insights are organized to align with annual planning requirements, providing actionable intelligence for budget allocation and marketing strategy development.</p>
+        </div>
+        
+        <h2>Market Performance Metrics</h2>
+        <div class="section-intro">
+            <p>The Armenia market demonstrates exceptional growth across all key performance indicators, with hotel guests (+116.7% YoY) and flight searches (+33.5% YoY) leading the growth trajectory. This outstanding performance represents the highest growth rate among emerging markets, indicating robust market conditions and exceptional potential for Abu Dhabi visitation expansion.</p>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <h3 class="metric-title">Outbound Travel Context</h3>
+                <div class="metric-value">1,350,000 (+3.8% YoY)</div>
+            </div>
+            <p class="metric-description">Total outbound travel from Armenia reached 1,350,000 in 2024, growing 3.8% compared to 2023's 1,300,000 outbound travelers.</p>
             
-            <div class="metrics-highlight">
-                <div class="metric-highlight">
-                    <span class="value">+116.7%</span>
-                    <span class="label">Hotel Guests Growth</span>
-                </div>
-                <div class="metric-highlight">
-                    <span class="value">+33.5%</span>
-                    <span class="label">Flight Searches Growth</span>
-                </div>
-                <div class="metric-highlight">
-                    <span class="value">1.3K</span>
-                    <span class="label">Annual Outbound Travel</span>
-                </div>
-                <div class="metric-highlight">
-                    <span class="value">45 days</span>
-                    <span class="label">Booking Window</span>
-                </div>
+            <div class="calculation">
+                <h5>Market Context Analysis:</h5>
+                <p>Armenia outbound travel peaks in October (192,000) and July (165,000), representing fall and summer travel patterns. Abu Dhabi captures approximately 2.2% of total Armenia outbound travel based on hotel guest data (30,180 ÷ 1,350,000).</p>
             </div>
             
-            <div class="insight-card">
-                <h3><i class="fas fa-rocket"></i> Exceptional Growth Trajectory</h3>
-                <p>Armenia demonstrates the highest growth rate among emerging markets with hotel guests surging by 116.7% year-over-year (from 13.9K to 30.2K). This remarkable expansion indicates strong market appetite and successful positioning strategies. The sustained growth momentum positions Armenia as a priority market for continued investment.</p>
-            </div>
-            
-            <div class="insight-card">
-                <h3><i class="fas fa-search"></i> Strong Search Interest</h3>
-                <p>Flight searches increased by 33.5% YoY, demonstrating growing travel intent and awareness of Abu Dhabi as a destination. The peak search volume in January (4,485 searches) indicates strong early-year planning behavior, creating opportunities for strategic campaign timing.</p>
-            </div>
-            
-            <div class="insight-card">
-                <h3><i class="fas fa-gem"></i> Untapped Market Potential</h3>
-                <p>With only 1.3K annual outbound travelers, Armenia represents significant untapped potential. The small market size allows for focused, high-impact marketing strategies that can achieve substantial percentage gains with relatively modest investment.</p>
+            <div class="business-implications">
+                <h5>Market Opportunity:</h5>
+                <ul>
+                    <li>The 3.8% growth in outbound travel indicates a stable Armenia travel market with modest expansion.</li>
+                    <li>Abu Dhabi's hotel guest growth (+116.7%) dramatically outpaces overall outbound travel growth, indicating exceptional market share capture.</li>
+                    <li>Fall peaks in outbound travel align with hotel guest patterns, creating focused marketing opportunities.</li>
+                    <li>Strong market share (2.2%) indicates Abu Dhabi is a preferred destination choice for Armenian travelers within the regional opportunity market.</li>
+                </ul>
             </div>
         </div>
         
-        <div class="insights-section">
-            <h2><i class="fas fa-chart-bar"></i> Seasonal Trends & Opportunities</h2>
+        <div class="metric-card">
+            <div class="metric-header">
+                <h3 class="metric-title">Flight Searches for Abu Dhabi</h3>
+                <div class="metric-value">33,080 (+33.5% YoY)</div>
+            </div>
+            <p class="metric-description">Flight searches from Armenia for Abu Dhabi totaled 33,080 in 2024, showing exceptional growth of 33.5% compared to 2023's 24,780 searches.</p>
             
-            <div class="insight-card">
-                <h3><i class="fas fa-sun"></i> Summer Peak Performance</h3>
-                <p>August shows the highest hotel guest volumes (4,724 guests in 2024), representing the primary travel season for Armenian visitors. This peak period coincides with favorable weather conditions and vacation periods, offering opportunities for premium positioning.</p>
+            <div class="calculation">
+                <h5>Search Pattern Analysis:</h5>
+                <p>Peak search activity occurs in January (4,485 searches) and February (4,301 searches), indicating advance planning for spring travel. The growth represents an additional 8,300 flight searches year-over-year.</p>
             </div>
             
-            <div class="insight-card">
-                <h3><i class="fas fa-calendar-alt"></i> Early Year Planning</h3>
-                <p>January demonstrates peak flight search activity (4,485 searches), indicating Armenian travelers plan well in advance. This behavior pattern creates opportunities for early-year marketing campaigns and advance booking incentives to capture travel intent.</p>
-            </div>
-            
-            <div class="insight-card">
-                <h3><i class="fas fa-plane-departure"></i> Outbound Travel Patterns</h3>
-                <p>July shows peak outbound travel (196 travelers in 2023), suggesting summer vacation preferences. The relatively small but consistent outbound volumes indicate a stable, quality-focused traveler segment that values premium experiences.</p>
-            </div>
-        </div>
-        
-        <div class="insights-section">
-            <h2><i class="fas fa-lightbulb"></i> Strategic Recommendations</h2>
-            
-            <div class="recommendation-card">
-                <h3><i class="fas fa-bullseye"></i> Focused Market Development</h3>
-                <p>Given Armenia's exceptional growth rate (+116.7%), prioritize this market for accelerated development. Implement targeted campaigns, establish local partnerships, and develop Armenia-specific content to sustain momentum and capture the growing travel interest.</p>
-            </div>
-            
-            <div class="recommendation-card">
-                <h3><i class="fas fa-calendar-check"></i> Strategic Campaign Timing</h3>
-                <p>Leverage the January search peak with targeted campaigns for summer travel. Launch early-year promotions in December-January to capture planning behavior, and develop August-focused packages to maximize the peak travel season.</p>
-            </div>
-            
-            <div class="recommendation-card">
-                <h3><i class="fas fa-users"></i> Quality-Focused Positioning</h3>
-                <p>With small but growing outbound volumes, position Abu Dhabi as a premium, exclusive destination for Armenian travelers. Focus on luxury experiences, cultural connections, and personalized service to attract high-value visitors.</p>
-            </div>
-            
-            <div class="recommendation-card">
-                <h3><i class="fas fa-handshake"></i> Local Partnership Development</h3>
-                <p>Establish strategic partnerships with Armenian travel agencies, airlines, and cultural organizations. Develop co-marketing initiatives and leverage local influencers to build brand awareness and credibility in this emerging market.</p>
+            <div class="business-implications">
+                <h5>Strategic Implications:</h5>
+                <ul>
+                    <li>The exceptional 33.5% growth in flight searches indicates dramatically increasing travel intent and consideration for Abu Dhabi.</li>
+                    <li>Winter peak in searches (January-February) suggests planning for spring travel, aligning with hotel guest patterns.</li>
+                    <li>The search-to-booking conversion remains strong given the exceptional hotel guest growth rate (+116.7%).</li>
+                    <li>The growing search volume (33K+) indicates Abu Dhabi has achieved significant mindshare in the Armenia market.</li>
+                </ul>
             </div>
         </div>
         
-        <div class="insights-section">
-            <h2><i class="fas fa-target"></i> Implementation Priorities</h2>
+        <div class="metric-card">
+            <div class="metric-header">
+                <h3 class="metric-title">Hotel Guests for Abu Dhabi</h3>
+                <div class="metric-value">30,180 (+116.7% YoY)</div>
+            </div>
+            <p class="metric-description">Hotel guests from Armenia reached 30,180 in 2024, representing exceptional growth of 116.7% compared to 2023's 13,920 guests.</p>
             
-            <div class="insight-card">
-                <h3><i class="fas fa-star"></i> High Priority Actions</h3>
-                <p><strong>Q1 2025:</strong> Launch Armenia-specific digital campaigns, establish local partnerships, and develop cultural connection content. <strong>Q2 2025:</strong> Implement summer package promotions and expand distribution channels.</p>
+            <div class="calculation">
+                <h5>Growth Analysis:</h5>
+                <p>The 116.7% growth represents an additional 16,260 hotel guests compared to 2023. Peak performance occurred in August (4,724 guests), followed by September (4,685 guests) and October (4,209 guests).</p>
             </div>
             
-            <div class="insight-card">
-                <h3><i class="fas fa-chart-pie"></i> Budget Allocation Strategy</h3>
-                <p>Allocate 15% of emerging markets budget to Armenia given exceptional growth potential. Focus 50% on digital marketing, 30% on partnerships, and 20% on content development. Prioritize January and June-July campaign periods.</p>
+            <div class="interpretation">
+                <h5>Seasonal Patterns:</h5>
+                <ul>
+                    <li><strong>Summer Peak</strong>: August-September shows strongest performance</li>
+                    <li><strong>Fall Strength</strong>: October demonstrates significant activity</li>
+                    <li><strong>Spring Growth</strong>: March-May shows solid momentum</li>
+                    <li><strong>Winter Planning</strong>: January-February search peaks for spring travel</li>
+                </ul>
             </div>
             
-            <div class="insight-card">
-                <h3><i class="fas fa-analytics"></i> Success Metrics</h3>
-                <p>Target 50% hotel guest growth for 2025, achieve 25% increase in flight searches, maintain 45-day booking window, and establish 3 strategic local partnerships. Monitor conversion rates from searches to bookings as key performance indicator.</p>
+            <div class="business-implications">
+                <h5>Strategic Implications:</h5>
+                <ul>
+                    <li>The exceptional 116.7% growth indicates highly successful market penetration and strong brand appeal in the Armenia market.</li>
+                    <li>Summer seasonality aligns with Armenia travel patterns, providing opportunities for targeted summer campaigns.</li>
+                    <li>The outstanding conversion combined with strong search growth indicates exceptional targeting and booking efficiency.</li>
+                    <li>2025 data shows continued exceptional momentum with strong Q1-Q2 performance, indicating sustained growth trajectory.</li>
+                </ul>
             </div>
+        </div>
+        
+        <h2>Strategic Recommendations</h2>
+        <div class="section-intro">
+            <p>Based on the comprehensive analysis of Armenia market performance, the following strategic recommendations are designed to sustain exceptional growth momentum and capitalize on the unique high-growth emerging market characteristics.</p>
+        </div>
+        
+        <div class="example">
+            <h5>Priority Recommendation 1: Growth Momentum Acceleration</h5>
+            <p>Capitalize on the exceptional growth rates (hotel guests +116.7%, flight searches +33.5%) with increased investment to capture the expanding market opportunity and maintain competitive advantage in this high-growth emerging market.</p>
+        </div>
+        
+        <div class="example">
+            <h5>Priority Recommendation 2: Market Share Expansion</h5>
+            <p>With Abu Dhabi capturing 2.2% of Armenia outbound travel within the regional emerging market opportunity, develop strategies to expand this market share through premium positioning and targeted marketing campaigns focused on the growing Armenian travel market.</p>
+        </div>
+        
+        <div class="example">
+            <h5>Priority Recommendation 3: Summer Season Optimization</h5>
+            <p>Leverage the successful August peak (4,724 guests) by developing targeted summer campaigns. Focus on May-June timing to capture the summer travel season (45-day booking window).</p>
+        </div>
+        
+        <div class="example">
+            <h5>Priority Recommendation 4: Early Planning Leverage</h5>
+            <p>Capitalize on the January-February search peaks with targeted campaigns for spring-summer travel. Launch early-year promotions to capture planning behavior and develop summer-focused packages.</p>
+        </div>
+        
+        <h2>Seasonality & Campaign Planning Insights</h2>
+        <div class="section-intro">
+            <p>Critical seasonality patterns and performance analysis to optimize campaign timing, budget allocation, and strategic positioning for maximum ROI in the Armenia market.</p>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <h3 class="metric-title">Summer Peak Advantage</h3>
+                <div class="metric-value">Strategic Alignment</div>
+            </div>
+            <p class="metric-description">Armenia shows summer seasonality where both outbound travel and Abu Dhabi visits peak in July-August, creating strategic advantages for focused marketing.</p>
+            
+            <div class="calculation">
+                <h5>Seasonal Alignment Analysis:</h5>
+                <p><strong>Armenia Peak Outbound Travel</strong>: July (165,000 travelers) - Summer vacation season<br>
+                <strong>Abu Dhabi Peak Armenia Visitors</strong>: August (4,724 guests) - Summer travel season<br>
+                <strong>Market Share</strong>: Abu Dhabi captures 2.2% of total Armenia outbound travel (30,180 ÷ 1,350,000)</p>
+            </div>
+            
+            <div class="business-implications">
+                <h5>Strategic Implications:</h5>
+                <ul>
+                    <li>Summer seasonality alignment enables focused marketing during peak demand periods without counter-seasonal positioning.</li>
+                    <li>August alignment allows for premium positioning during both Armenia's peak travel season and Abu Dhabi's summer season.</li>
+                    <li>Strong market share (2.2%) within the regional emerging market indicates Abu Dhabi is a preferred destination for Armenian travelers during peak season.</li>
+                    <li>Aligned patterns enable concentrated marketing investment for maximum impact during peak periods.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <h3 class="metric-title">H1 2025 Performance Trends</h3>
+                <div class="metric-value">Sustained Excellence</div>
+            </div>
+            <p class="metric-description">First half 2025 data shows continued exceptional growth across all metrics, indicating sustained market expansion and strong competitive positioning.</p>
+            
+            <div class="calculation">
+                <h5>H1 2025 vs H1 2024 Performance:</h5>
+                <p><strong>Hotel Guests</strong>: 20,939 vs 16,980 (+23.3% growth)<br>
+                <strong>Flight Searches</strong>: 17,813 vs 16,751 (+6.3% growth)<br>
+                <strong>Outbound Travel</strong>: 590 vs 587 (+0.5% growth)<br>
+                <strong>Market Share</strong>: Continued exceptional penetration (35.5%)</p>
+            </div>
+            
+            <div class="business-implications">
+                <h5>Campaign Planning Implications:</h5>
+                <ul>
+                    <li><strong>Sustained Excellence</strong>: Hotel guest growth continues (+23.3%) showing resilient demand and market expansion.</li>
+                    <li><strong>Market Leadership</strong>: Armenia maintaining exceptional growth rates among emerging markets.</li>
+                    <li><strong>Market Share Expansion</strong>: Growing share (35.5% in H1 2025) demonstrating continued market dominance.</li>
+                    <li><strong>Investment Opportunity</strong>: Strong ROI potential given exceptional conversion rates and growth trajectory.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <h3 class="metric-title">Optimal Campaign Timing</h3>
+                <div class="metric-value">45-Day Window</div>
+            </div>
+            <p class="metric-description">Strategic campaign timing based on moderate booking window and summer seasonal patterns unique to the Armenian market.</p>
+            
+            <div class="calculation">
+                <h5>Campaign Calendar Optimization:</h5>
+                <p><strong>Spring Campaigns (May-Jun)</strong>: Target summer peak → August arrivals<br>
+                <strong>Winter Campaigns (Dec-Jan)</strong>: Build momentum for spring travel → March-April opportunity<br>
+                <strong>Booking Window</strong>: 45 days average advance planning<br>
+                <strong>Peak Conversion</strong>: June campaigns → August arrivals (4,724)</p>
+            </div>
+            
+            <div class="business-implications">
+                <h5>Tactical Recommendations:</h5>
+                <ul>
+                    <li><strong>May-June Campaign Launch</strong>: Target August peak for summer travel (45-day window).</li>
+                    <li><strong>Early Year Investment</strong>: Leverage January-February search peaks for spring-summer conversion.</li>
+                    <li><strong>Growth Acceleration</strong>: Increase investment to capitalize on exceptional momentum and market share gains.</li>
+                    <li><strong>Regional Market Positioning</strong>: Leverage 2.2% market share within the regional emerging market for premium experiences and growth expansion.</li>
+                </ul>
+            </div>
+            
+            <div class="example">
+                <h5>2025 Campaign Strategy:</h5>
+                <p><strong>Immediate Priority</strong>: Launch growth acceleration campaigns in May-June 2025 to capture August peak for exceptional Q3 2025 performance. <strong>Market Leadership</strong>: Leverage 2.2% market share and 116.7% growth rate to establish Armenia as a showcase emerging market success story within the regional tourism landscape.</p>
+            </div>
+        </div>
+
+        <h2>Market Outlook</h2>
+        <div class="card">
+            <h3>2025 Projections and Strategic Considerations</h3>
+            <p>Based on H1 2025 performance and summer seasonality patterns, the Armenia market shows exceptional potential for continued growth acceleration and market leadership among emerging markets.</p>
+            
+            <h4>H1 2025 Key Insights:</h4>
+            <ul>
+                <li><strong>Growth Leadership</strong>: Hotel guests (+23.3%) maintaining exceptional momentum among emerging markets</li>
+                <li><strong>Market Dominance</strong>: 35.5% market share in H1 2025 representing unprecedented emerging market penetration</li>
+                <li><strong>Summer Seasonality</strong>: Unique summer alignment enabling focused marketing strategies</li>
+                <li><strong>Conversion Excellence</strong>: Exceptional efficiency with highest growth rates among all emerging markets</li>
+            </ul>
+            
+            <h4>Strategic Priorities for H2 2025:</h4>
+            <ul>
+                <li><strong>Growth Acceleration</strong>: Increase investment to capitalize on exceptional momentum and market opportunity</li>
+                <li><strong>Summer Seasonality Leverage</strong>: Focus campaigns during August peak alignment for maximum impact</li>
+                <li><strong>Market Share Expansion</strong>: Build on 2.2% market share within the regional emerging market to further expand Armenia outbound travel preferences</li>
+                <li><strong>Agile Campaign Management</strong>: Utilize 45-day booking window for responsive campaign timing and optimization</li>
+                <li><strong>Premium Positioning</strong>: Leverage exceptional market share and growth rates for premium brand positioning</li>
+                <li><strong>Emerging Market Leadership</strong>: Establish Armenia as the benchmark for emerging market success and growth acceleration</li>
+            </ul>
         </div>
     </div>
     
-    <button class="print-btn" title="Print Insights"><i class="fas fa-print"></i></button>
-    
-    <footer style="background-color: var(--gray-100); padding: 20px 0; text-align: center; margin-top: 40px; border-top: 1px solid var(--gray-300);">
+    <div class="footer">
         <div class="container">
-            <p style="margin: 0; color: var(--gray-700); font-size: 0.9rem;">© 2025 Research & Insights Unit | Strategic Marketing & Communications | Department of Culture and Tourism – Abu Dhabi</p>
+            <p>© 2025 Research & Insights Unit | Strategic Marketing & Communications | Department of Culture and Tourism – Abu Dhabi</p>
         </div>
-    </footer>
-    
-    <script>
-        // Print functionality
-        document.querySelector('.print-btn').addEventListener('click', function() {
-            window.print();
-        });
-    </script>
+    </div>
 </body>
 </html>
